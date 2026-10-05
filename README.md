@@ -16,7 +16,7 @@ J'explore aussi l'**IA comme outil au service du développement**, à travers un
 
 | 🖥️ Frontend | 📺 400+ écrans | 🎓 Bac+5 | ⚡ ~10 min |
 |:---:|:---:|:---:|:---:|
-| seul dév frontend sur une app livrée en production | valorisés dans 6 départements (~1 M€ d'investissement) | titre RNCP 7, obtenu en alternance | pour générer un site simple avec mon outil IA |
+| seul dev frontend sur une app livrée en production | valorisés dans 6 départements (~1 M€ d'investissement) | titre RNCP 7, obtenu en alternance | pour générer un site simple avec mon outil IA |
 
 ## 💼 Expériences
 
