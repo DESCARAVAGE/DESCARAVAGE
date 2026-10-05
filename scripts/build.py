@@ -1,12 +1,14 @@
 """Génère dark.svg et light.svg — banner de profil GitHub animé (SMIL pur)."""
 import random
 from xml.sax.saxutils import escape
-from ascii import portrait
+import os
+from ascii import portrait, from_image
 
 # ============ CONTENU (modifiable) ============
 NAME = "DESCARAVAGE"
 HANDLE = "descaravage"
 GREETING = "Salut 👋, moi c'est"
+AVATAR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "avatar.png")  # photo de profil GitHub ; si absente, silhouette générique
 ROLES = ["Développeur Frontend React / TypeScript", "Développeur Fullstack · Bac+5",
          "Workflows agentiques & IA", "Disponible immédiatement"]
 INFO = [  # (libellé, valeur) — pas d'email ni de téléphone
@@ -182,22 +184,26 @@ def build(mode):
       f'<text x="19" y="12.8" font-family="{MONO}" font-size="9.5" fill="{P["a3"]}">LIVE</text></g>')
     a(f'<line x1="{LX+20}" y1="{LY+46}" x2="{LX+LW-20}" y2="{LY+46}" stroke="{P["border"]}" stroke-opacity="{P["border_op"]*1.2:.2f}"/>')
     # ascii
-    lines = portrait()
-    AX, AY, AW, LHt = LX + 30, LY + 74, 360, 12.4
+    if os.path.exists(AVATAR):
+        lines = from_image(AVATAR, invert=True)
+        AX, AY, AW, LHt, FS = LX + 30, LY + 70, 360, 9.0, 7.6
+    else:
+        lines = portrait()
+        AX, AY, AW, LHt, FS = LX + 30, LY + 74, 360, 12.4, 10.4
     a(f'<clipPath id="leftClip"><rect x="{LX}" y="{LY+47}" width="{LW}" height="{LH-47}" rx="20"/></clipPath>')
     a('<g clip-path="url(#leftClip)">')
     a('<g>')
     a('<animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="5s" repeatCount="indefinite"/>')
-    a(f'<g font-family="{MONO}" font-size="10.4" fill="url(#asciiGrad)" filter="url(#glow)" xml:space="preserve">')
+    a(f'<g font-family="{MONO}" font-size="{FS}" fill="url(#asciiGrad)" filter="url(#glow)" xml:space="preserve">')
     for i, l in enumerate(lines):
         if not l.strip():
             continue
-        b = 0.4 + i * 0.07
+        b = 0.4 + i * (2.5 / len(lines))
         a(f'<text x="{AX}" y="{AY + i*LHt:.1f}" textLength="{AW}" lengthAdjust="spacingAndGlyphs" opacity="0">{escape(l).replace(' ', chr(160))}'
           f'<animate attributeName="opacity" from="0" to="1" begin="{b:.2f}s" dur=".25s" fill="freeze"/></text>')
     a('</g>')
     # curseur qui descend pendant le reveal puis clignote
-    end = 0.4 + len(lines) * 0.07
+    end = 2.9
     a(f'<rect x="{AX+AW+4}" y="{AY-10}" width="7" height="12" fill="{P["a2"]}">'
       f'<animate attributeName="y" from="{AY-10}" to="{AY + (len(lines)-1)*LHt - 10:.1f}" dur="{end-0.4:.2f}s" begin=".4s" fill="freeze"/>'
       f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.5;.5;1" dur="1s" repeatCount="indefinite"/></rect>')
@@ -207,7 +213,7 @@ def build(mode):
       f'<animate attributeName="y" values="{LY-70};{LY+LH}" dur="4.5s" repeatCount="indefinite"/></rect>')
     a('</g>')
     a(f'<text x="{LX+22}" y="{LY+LH-20}" font-family="{MONO}" font-size="11" fill="{P["muted"]}" opacity="0">'
-      f'<tspan fill="{P["a3"]}">✓</tspan> render complete · {len(lines)} lines'
+      f'<tspan fill="{P["a3"]}">✓</tspan> rendu terminé · {len(lines)} lignes'
       f'<animate attributeName="opacity" from="0" to="1" begin="{end:.2f}s" dur=".4s" fill="freeze"/></text>')
     a('</g>')
 

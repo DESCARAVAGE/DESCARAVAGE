@@ -70,3 +70,42 @@ def portrait():
 if __name__ == "__main__":
     for l in portrait():
         print(l)
+
+
+def from_image(path, cols=78, rows=50, invert=False):
+    """Photo détourée (PNG avec transparence) -> ASCII. Fond = vide."""
+    import numpy as np
+    from PIL import Image
+    img = Image.open(path).convert("RGBA")
+    target = PW / PH
+    w, h = img.size
+    if w / h > target:
+        nw = int(h * target); img = img.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    else:
+        nh = int(w / target); img = img.crop((0, 0, w, nh))
+    import cv2
+    full = np.asarray(img).astype(np.uint8)
+    gray = cv2.cvtColor(full[..., :3], cv2.COLOR_RGB2GRAY)
+    gray = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(6, 6)).apply(gray)
+    blur = cv2.GaussianBlur(gray, (0, 0), 3)
+    gray = cv2.addWeighted(gray, 1.8, blur, -0.8, 0)          # accentue les traits
+    small = cv2.resize(gray, (cols, rows), interpolation=cv2.INTER_AREA)
+    alpha = cv2.resize(full[..., 3], (cols, rows), interpolation=cv2.INTER_AREA) / 255
+    lum = small / 255
+    fg = alpha > 0.5
+    vals = np.sort(lum[fg])
+    eq = np.searchsorted(vals, lum) / max(1, len(vals))
+    eq = 0.12 + 0.88 * eq            # la silhouette ne disparaît jamais
+    if invert:
+        eq = 1.12 - eq
+    ramp = " .:-=+*#%@"
+    out = []
+    for y in range(rows):
+        row = ""
+        for x in range(cols):
+            if not fg[y, x]:
+                row += " "
+            else:
+                row += ramp[max(1, min(len(ramp) - 1, int(eq[y, x] * len(ramp))))]
+        out.append(row)
+    return out
