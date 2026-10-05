@@ -12,6 +12,13 @@
   <img alt="DESCARAVAGE — Développeur Frontend React / TypeScript" src="./assets/dark.svg?v=3" width="100%">
 </picture>
 
+
+## 👋 À propos
+
+Développeur fullstack de formation, je m'intéresse autant à ce que l'on construit qu'à la façon de le bâtir. Mon mémoire de fin d'études portait sur l'**approche système** : regarder un projet dans son ensemble, avec ses utilisateurs, ses équipes, ses outils et leurs interactions. Je pars du besoin, je pense le produit dans sa globalité, puis je livre une interface résiliente et maintenable.
+
+J'explore aussi l'**IA comme outil au service du développement**, à travers un projet personnel et plusieurs certifications.
+
 ## 📊 Stats
 
 <p align="center">
@@ -24,9 +31,3 @@
     <img alt="Top Langs" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&layout=compact">
   </picture>
 </p>
-
-## 👋 À propos
-
-Développeur fullstack de formation, je m'intéresse autant à ce que l'on construit qu'à la façon de le bâtir. Mon mémoire de fin d'études portait sur l'**approche système** : regarder un projet dans son ensemble, avec ses utilisateurs, ses équipes, ses outils et leurs interactions. Je pars du besoin, je pense le produit dans sa globalité, puis je livre une interface résiliente et maintenable.
-
-J'explore aussi l'**IA comme outil au service du développement**, à travers un projet personnel et plusieurs certifications.
