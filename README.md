@@ -21,30 +21,8 @@ J'explore aussi l'**IA comme outil au service du développement**, à travers un
 ## 💼 Expériences
 
 **Développeur Frontend React / TypeScript · Enedis** — *sept. 2023 – oct. 2025 · Tours (alternance)*
-- Frontend d'un réseau social interne mis en production, en équipe Agile, de la maquette au déploiement Docker (React, TypeScript, Vite)
-- Réutilisation de plus de 400 écrans interactifs inutilisés comme canal de diffusion de la plateforme
-- Tests unitaires et end-to-end (Jest, Playwright) sur les parcours principaux, exécutés avant chaque livraison
-- Recette, corrections et démonstrations aux équipes métiers, puis formation de l'équipe pour la suite
 
 **Développeur Full-Stack · Split Screen** — *mai 2022 – août 2022 · Orléans*
-- Site vitrine d'une association en 4 mois, de la conception au déploiement (PHP/Symfony, Twig, Bootstrap)
-
-## 🚀 Projets
-
-- **Système agentique de génération de sites web** *(mai 2026 – aujourd'hui)* — workflow LLM avec validation humaine à chaque étape, qui génère un site simple en ~10 min. Extension en cours : SEO, performance, sécurité, tests, conformité (RGPD, CGU, CGV). TypeScript, Python, Shell, Claude Code, Cursor.
-- **CV en ligne auto-hébergé** — serveur Linux : Docker, Nginx, Caddy, pare-feu iptables, analyse SonarQube.
-- **Ebook, site vitrine de photographe** — Next.js, Vercel, Supabase.
-
-## 🛠️ Compétences
-
-| | |
-|---|---|
-| **Frontend** | TypeScript · JavaScript · React · Next.js · Vite · Tailwind CSS · HTML5 · CSS3 |
-| **Tests & qualité** | Jest · Vitest · Playwright · SonarQube · design patterns |
-| **Environnement** | Linux (Shell, VPS, iptables) · Git · GitHub Actions · Docker · Nginx · Caddy |
-| **IA** | Workflows agentiques · RAG · itération de prompts · human-in-the-loop · Claude Code · Cursor |
-| **Backend** | Node.js · Express · API REST · GraphQL (Apollo) · Prisma · PostgreSQL |
-| **Méthodes** | Agile/Scrum · intégration Figma · Merise · DevSecOps |
 
 ## 🎓 Formation & certifications
 
