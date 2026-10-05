@@ -6,7 +6,7 @@ from ascii import portrait
 # ============ CONTENU (modifiable) ============
 NAME = "DESCARAVAGE"
 HANDLE = "descaravage"
-GREETING = "Salut 👋, moi c'est Daniel"
+GREETING = "Salut 👋, moi c'est"
 ROLES = ["Développeur Frontend React / TypeScript", "Développeur Fullstack · Bac+5",
          "Workflows agentiques & IA", "Disponible immédiatement"]
 INFO = [  # (libellé, valeur) — pas d'email ni de téléphone
