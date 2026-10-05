@@ -1,12 +1,16 @@
+<p align="center">
+  <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
+</p>
+
+<p align="center">
+  🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=3">
   <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=3">
   <img alt="DESCARAVAGE — Développeur Frontend React / TypeScript" src="./assets/dark.svg?v=3" width="100%">
 </picture>
-
-<p align="center">
-  <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
-</p>
 
 ## 👋 À propos
 
@@ -30,7 +34,6 @@ J'explore aussi l'**IA comme outil au service du développement**, à travers un
 - **Concepteur développeur d'applications** (RNCP 6, Bac+3/4) · Wild Code School, en alternance chez Enedis · 2023 – 2024
 - **Développeur web et web mobile** (RNCP 5, Bac+2) · Wild Code School, Orléans · 2022
 - **Certifications IA** — Anthropic : *AI Fluency for Builders*, *Building Effective Human-Agent Teams* · Google : *AI Fundamentals*, *AI for App Building*
-- 🌍 Français (natif) · Anglais B2
 
 ## 📊 Stats
 
