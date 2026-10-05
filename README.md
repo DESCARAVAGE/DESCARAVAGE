@@ -1,3 +1,16 @@
+## 📊 Stats
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-fast.vercel.app/api?username=DESCARAVAGE&count_private=true&theme=dracula&show_icons=true&hide_title=true">
+    <img alt="Stats" src="https://github-readme-stats-fast.vercel.app/api?username=DESCARAVAGE&count_private=true&show_icons=true&hide_title=true">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&theme=dracula&layout=compact">
+    <img alt="Top Langs" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&layout=compact">
+  </picture>
+</p>
+
 <p align="center">
   <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
 </p>
@@ -34,16 +47,3 @@ J'explore aussi l'**IA comme outil au service du développement**, à travers un
 - **Concepteur développeur d'applications** (RNCP 6, Bac+3/4) · Wild Code School, en alternance chez Enedis · 2023 – 2024
 - **Développeur web et web mobile** (RNCP 5, Bac+2) · Wild Code School, Orléans · 2022
 - **Certifications IA** — Anthropic : *AI Fluency for Builders*, *Building Effective Human-Agent Teams* · Google : *AI Fundamentals*, *AI for App Building*
-
-## 📊 Stats
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-fast.vercel.app/api?username=DESCARAVAGE&count_private=true&theme=dracula&show_icons=true&hide_title=true">
-    <img alt="Stats" src="https://github-readme-stats-fast.vercel.app/api?username=DESCARAVAGE&count_private=true&show_icons=true&hide_title=true">
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&theme=dracula&layout=compact">
-    <img alt="Top Langs" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&layout=compact">
-  </picture>
-</p>
