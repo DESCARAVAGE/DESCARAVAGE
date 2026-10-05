@@ -206,7 +206,7 @@ def build(mode):
     end = 2.9
     a(f'<rect x="{AX+AW+4}" y="{AY-10}" width="7" height="12" fill="{P["a2"]}">'
       f'<animate attributeName="y" from="{AY-10}" to="{AY + (len(lines)-1)*LHt - 10:.1f}" dur="{end-0.4:.2f}s" begin=".4s" fill="freeze"/>'
-      f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.5;.5;1" dur="1s" repeatCount="indefinite"/></rect>')
+      f'<animate attributeName="opacity" values="1;0" keyTimes="0;0.5" calcMode="discrete" dur="1s" repeatCount="indefinite"/></rect>')
     a('</g>')
     # scanline
     a(f'<rect x="{LX}" y="{LY}" width="{LW}" height="70" fill="url(#scanG)">'
@@ -249,23 +249,54 @@ def build(mode):
     a(f'<g opacity="0">{fade(1.0)}<text x="{CX}" y="{RY+122}" font-family="{SANS}" font-size="20" fill="{P["muted"]}">{escape(GREETING)}</text></g>')
     a(f'<g opacity="0">{fade(1.3, 12, .8)}<text x="{CX-2}" y="{RY+176}" font-family="{SANS}" font-size="50" font-weight="800" letter-spacing="1" fill="url(#nameGrad)" filter="url(#glow)">{NAME}</text></g>')
 
-    # rôles qui tapent
+    # rôles qui tapent — un élément par état (préfixe), chacun avec une animation courte
     rw = 12.0
-    T, anim = typing_keyframes(ROLES, rw)
     ry = RY + 216
+    rx0 = CX + 24
+    ev, t = [], 0.0
+    for i, ph in enumerate(ROLES):
+        for n in range(len(ph) + 1):
+            ev.append((t, i, n)); t += 0.075
+        t += 1.9 - 0.075
+        for n in range(len(ph) - 1, -1, -1):
+            ev.append((t, i, n)); t += 0.035
+        t += 0.45
+    T = t
+    spans = {}
+    for k, (tt, i, n) in enumerate(ev):
+        t_end = ev[k + 1][0] if k + 1 < len(ev) else T
+        spans.setdefault((i, n), []).append((tt / T, t_end / T))
+
+    def vis(intervals):
+        kt, vals = [0.0], ["0"]
+        for (s0, s1) in sorted(intervals):
+            if s0 <= kt[-1] + 1e-6:
+                vals[-1] = "1"
+            else:
+                kt.append(s0); vals.append("1")
+            if s1 < 1 - 1e-6:
+                kt.append(s1); vals.append("0")
+        return (f'<animate attributeName="opacity" values="{";".join(vals)}" '
+                f'keyTimes="{";".join(f"{x:.4f}" for x in kt)}" calcMode="discrete" '
+                f'dur="{T:.3f}s" begin="2s" repeatCount="indefinite"/>')
+
     a(f'<g opacity="0">{fade(1.8, 0, .4)}')
     a(f'<text x="{CX}" y="{ry}" font-family="{MONO}" font-size="19" fill="{P["a1"]}">❯</text>')
-    rx0 = CX + 24
-    for i, ph in enumerate(ROLES):
-        kt, vals = anim(lambda j, n, i=i: n * rw if j == i else 0)
-        a(f'<clipPath id="role{i}"><rect x="{rx0}" y="{ry-22}" width="0" height="30">'
-          f'<animate attributeName="width" values="{vals}" keyTimes="{kt}" calcMode="discrete" dur="{T:.2f}s" begin="2s" repeatCount="indefinite"/></rect></clipPath>')
-        a(f'<text x="{rx0}" y="{ry}" font-family="{MONO}" font-size="19" font-weight="600" fill="url(#accent)" '
-          f'textLength="{len(ph)*rw:g}" lengthAdjust="spacingAndGlyphs" clip-path="url(#role{i})">{escape(ph)}</text>')
-    kt, vals = anim(lambda j, n: rx0 + n * rw + 2)
-    a(f'<rect x="{rx0+2}" y="{ry-17}" width="2.5" height="21" fill="{P["a2"]}">'
-      f'<animate attributeName="x" values="{vals}" keyTimes="{kt}" calcMode="discrete" dur="{T:.2f}s" begin="2s" repeatCount="indefinite"/>'
-      f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.5;.5;1" dur="1s" repeatCount="indefinite"/></rect>')
+    a(f'<g font-family="{MONO}" font-size="19" font-weight="600" fill="url(#accent)">')
+    for (i, n), iv in spans.items():
+        if n == 0:
+            continue
+        txt = escape(ROLES[i][:n]).replace(" ", "\u00a0")
+        a(f'<text x="{rx0}" y="{ry}" textLength="{n*rw:g}" lengthAdjust="spacingAndGlyphs" opacity="0">{txt}{vis(iv)}</text>')
+    a('</g>')
+    a(f'<g fill="{P["a2"]}"><animate attributeName="opacity" values="1;0" keyTimes="0;0.5" calcMode="discrete" dur="1s" repeatCount="indefinite"/>')
+    # curseur : une position par nombre de caractères
+    bypos = {}
+    for (i, n), iv in spans.items():
+        bypos.setdefault(n, []).extend(iv)
+    for n, iv in sorted(bypos.items()):
+        a(f'<rect x="{rx0 + n*rw + 2:g}" y="{ry-17}" width="2.5" height="21" opacity="0">{vis(iv)}</rect>')
+    a('</g>')
     a('</g>')
 
     # séparateur
