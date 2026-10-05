@@ -1,3 +1,17 @@
+<h4 align="center">
+  <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
+</h4>
+
+<h6 align="center">
+  🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a>
+</h6>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=3">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=3">
+  <img alt="DESCARAVAGE — Développeur Frontend React / TypeScript" src="./assets/dark.svg?v=3" width="100%">
+</picture>
+
 ## 📊 Stats
 
 <p align="center">
@@ -10,20 +24,6 @@
     <img alt="Top Langs" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=DESCARAVAGE&layout=compact">
   </picture>
 </p>
-
-<p align="center">
-  <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
-</p>
-
-<p align="center">
-  🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a>
-</p>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=3">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=3">
-  <img alt="DESCARAVAGE — Développeur Frontend React / TypeScript" src="./assets/dark.svg?v=3" width="100%">
-</picture>
 
 ## 👋 À propos
 
