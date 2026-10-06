@@ -3,19 +3,19 @@
 # Modifie ces lignes puis commit : la bannière se régénère toute seule (~1 min).
 name: Dany SK
 handle: descaravage
-greeting: "Salut 👋, moi c'est"
+greeting: "Hello World 👋, I'm"
 roles:                      # tapées une par une (48 caractères max)
   - Product Engineer Frontend
   - Fullstack Software · RNCP 7
-  - Workflows agentiques & IA
+  - Agentics Workflows & IA
   - Designer UI/UX
   - Project Manager
 info:                       # 5 lignes max
-  Localisation: Tours · ouvert à la mobilité
-  Expérience: 2 ans frontend en alternance · Enedis
-  Formation: RNCP 7 · Skolæ / CEFIM, RNCP 6 & 5 · WCS
-  En ce moment: Système agentique de génération de sites
-  GitHub: github.com/DESCARAVAGE
+  Localization: Tours · Open to mobility
+  Experience: 2 years apprenticeship frontend · Enedis
+  Eduction: RNCP 7 · Skolæ / CEFIM, RNCP 6 & 5 · WCS
+  At the moment: Agentic site generation system
+  Last Hackathon: 10 September 2026
 skills:                     # 2 lignes de pastilles max (~12 courtes)
   - React
   - TypeScript
@@ -29,7 +29,7 @@ skills:                     # 2 lignes de pastilles max (~12 courtes)
   - Jest
   - Claude Code
   - Opencode
-status: disponible maintenant
+status: Available now
 socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 -->
 <h4 align="center">
@@ -37,15 +37,15 @@ socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 </h4>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=e4f7de4f">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=e4f7de4f">
-  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=e4f7de4f" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=46fd2b42">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=46fd2b42">
+  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=46fd2b42" width="100%">
 </picture>
 
 
 ## 👋 Bienvenue dans lab 
 
-Mes repos qui vaillent le détour sont épinglés plus bas
+My repos points worth checking out are pinned below
 
 
 ## 📊 Stats

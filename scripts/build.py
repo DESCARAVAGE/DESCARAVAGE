@@ -11,10 +11,10 @@ AVATAR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "avatar.png") 
 ROLES = ["Product Engineer Frontend", "Fullstack Software · RNCP 5,6 & 7",
          "Workflows agentiques & IA", "Designer UI/UX", "Project Manager"]
 INFO = [  # (libellé, valeur) — pas d'email ni de téléphone
-    ("Localisation", "Tours · Ouvert à la mobilité"),
-    ("Expérience", "2 ans frontend en alternance · Enedis"),
-    ("Formation", "RNCP 7 · Skolæ / CEFIM", "RNCP 6 & 5 · WCS"),
-    ("En ce moment", "Système agentique de génération de sites"),
+    ("Localization", "Tours · Ouvert à la mobilité"),
+    ("Experience", "2 ans frontend en alternance · Enedis"),
+    ("Eduction", "RNCP 7 · Skolæ / CEFIM", "RNCP 6 & 5 · WCS"),
+    ("At the moment", "Système agentique de génération de sites"),
     ("GitHub", "github.com/DESCARAVAGE"),
 ]
 SKILLS = ["React", "TypeScript", "Next.js", "Vite", "Tailwind", "Node.js",
@@ -350,7 +350,7 @@ def build(mode):
 
     # compétences
     sy = RY + 272 + len(INFO) * 25 + 8
-    a(f'<g opacity="0">{fade(3.6, 0, .4)}<text x="{CX}" y="{sy}" font-family="{MONO}" font-size="11" letter-spacing="2" fill="{P["muted"]}">STACK TECHNIQUE</text></g>')
+    a(f'<g opacity="0">{fade(3.6, 0, .4)}<text x="{CX}" y="{sy}" font-family="{MONO}" font-size="11" letter-spacing="2" fill="{P["muted"]}">HARD SKILLS</text></g>')
     px, py, row = CX, sy + 14, 0
     maxx = RX + RW - 34
     for i, s in enumerate(SKILLS):
