@@ -249,7 +249,7 @@ def build(mode):
       f'<animate attributeName="y" values="{LY-70};{LY+LH}" dur="4.5s" repeatCount="indefinite"/></rect>')
     a('</g>')
     a(f'<text x="{LX+22}" y="{LY+LH-20}" font-family="{MONO}" font-size="11" fill="{P["muted"]}" opacity="0">'
-      f'<tspan fill="{P["a3"]}">✓</tspan> rendu terminé · {len(lines)} lignes'
+      f'<tspan fill="{P["a3"]}">✓</tspan> rendered successfully · {len(lines)} lines'
       f'<animate attributeName="opacity" from="0" to="1" begin="{end:.2f}s" dur=".4s" fill="freeze"/></text>')
     a('</g>')
 
@@ -264,7 +264,7 @@ def build(mode):
     # barre de titre
     for i, c in enumerate(P["dot"]):
         a(f'<circle cx="{RX+24+i*18}" cy="{RY+22}" r="5.5" fill="{c}" opacity=".9"/>')
-    a(f'<text x="{RX+RW/2}" y="{RY+26}" text-anchor="middle" font-family="{MONO}" font-size="11.5" fill="{P["muted"]}">{escape(HANDLE)}@github: ~/profile</text>')
+    a(f'<text x="{RX+RW/2}" y="{RY+26}" text-anchor="middle" font-family="{MONO}" font-size="11.5" fill="{P["muted"]}">: ~/profile</text>')
     a(f'<text x="{RX+RW-24}" y="{RY+26}" text-anchor="end" font-family="{MONO}" font-size="10.5" fill="{P["muted"]}" opacity=".7">zsh</text>')
     a(f'<line x1="{RX}" y1="{RY+44}" x2="{RX+RW}" y2="{RY+44}" stroke="{P["border"]}" stroke-opacity="{P["border_op"]*1.2:.2f}"/>')
 

@@ -29,7 +29,7 @@ skills:                     # 2 lignes de pastilles max (~12 courtes)
   - Jest
   - Claude Code
   - Opencode
-status: Available now
+status: available now
 socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 -->
 <h4 align="center">
@@ -37,9 +37,9 @@ socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 </h4>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=46fd2b42">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=46fd2b42">
-  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=46fd2b42" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=0d042959">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=0d042959">
+  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=0d042959" width="100%">
 </picture>
 
 
