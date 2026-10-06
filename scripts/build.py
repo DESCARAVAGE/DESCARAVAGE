@@ -1,4 +1,3 @@
-"""Génère dark.svg et light.svg — banner de profil GitHub animé (SMIL pur)."""
 import random
 from xml.sax.saxutils import escape
 import os
@@ -9,19 +8,56 @@ NAME = "Dany SK"
 HANDLE = "descaravage"
 GREETING = "Salut 👋, moi c'est"
 AVATAR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "avatar.png")  # photo de profil GitHub ; si absente, silhouette générique
-ROLES = ["Product Engineer Frontend", "Fullstack Software · RNCP 7",
+ROLES = ["Product Engineer Frontend", "Fullstack Software · RNCP 5,6 & 7",
          "Workflows agentiques & IA", "Designer UI/UX", "Project Manager"]
 INFO = [  # (libellé, valeur) — pas d'email ni de téléphone
-    ("Localisation", "Tours · ouvert à la mobilité"),
+    ("Localisation", "Tours · Ouvert à la mobilité"),
     ("Expérience", "2 ans frontend en alternance · Enedis"),
-    ("Formation", "Bac+5 RNCP 7 · Skolæ / CEFIM"),
+    ("Formation", "RNCP 7 · Skolæ / CEFIM", "RNCP 6 & 5 · WCS"),
     ("En ce moment", "Système agentique de génération de sites"),
     ("GitHub", "github.com/DESCARAVAGE"),
 ]
 SKILLS = ["React", "TypeScript", "Next.js", "Vite", "Tailwind", "Node.js",
           "PostgreSQL", "Docker", "Playwright", "Jest", "Claude Code", "Figma"]
-STATUS = "disponible immédiatement"
+STATUS = "disponible maintenant"
 SOCIALS = ["github", "linkedin", "web"]
+
+# ============ LECTURE DU README (prioritaire sur les valeurs ci-dessus) ============
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+README = os.path.join(ROOT, "README.md")
+
+
+def load_readme_config(path=README):
+    import re
+    if not os.path.exists(path):
+        return {}
+    m = re.search(r"<!--\s*BANNER\s*\n(.*?)-->", open(path, encoding="utf-8").read(), re.S)
+    if not m:
+        return {}
+    import yaml
+    return yaml.safe_load(m.group(1)) or {}
+
+
+_cfg = load_readme_config()
+NAME = str(_cfg.get("name", NAME))
+HANDLE = str(_cfg.get("handle", HANDLE))
+GREETING = str(_cfg.get("greeting", GREETING))
+ROLES = [str(r) for r in _cfg.get("roles", ROLES)]
+if "info" in _cfg:
+    INFO = [(str(k), str(v)) for k, v in _cfg["info"].items()]
+SKILLS = [str(x) for x in _cfg.get("skills", SKILLS)]
+STATUS = str(_cfg.get("status", STATUS))
+SOCIALS = [str(x) for x in _cfg.get("socials", SOCIALS)]
+
+# garde-fous de mise en page
+assert ROLES, "il faut au moins un rôle"
+for _r in ROLES:
+    if len(_r) > 48:
+        print(f"⚠️  rôle trop long (> 48 caractères), il débordera : {_r!r}")
+if len(INFO) > 5:
+    print(f"⚠️  {len(INFO)} lignes d'info : seules les 5 premières sont affichées")
+    INFO = INFO[:5]
+SOCIALS = [x for x in SOCIALS if x in ("github", "linkedin", "x", "web")]
 
 W, H = 1180, 610
 MONO = "ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
@@ -72,8 +108,8 @@ def build(mode):
     o = []
     a = o.append
     a(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
-      f'role="img" aria-label="{NAME} — {ROLES[0]}">')
-    a(f'<title>{NAME} — {ROLES[0]}</title>')
+      f'role="img" aria-label="{escape(NAME)} — {escape(ROLES[0])}">')
+    a(f'<title>{escape(NAME)} — {escape(ROLES[0])}</title>')
     # ---------- CSS (hover : fonctionne si le SVG est ouvert directement) ----------
     a('<style>'
       '.pill{transition:transform .25s ease, filter .25s ease;transform-box:fill-box;transform-origin:center}'
@@ -228,7 +264,7 @@ def build(mode):
     # barre de titre
     for i, c in enumerate(P["dot"]):
         a(f'<circle cx="{RX+24+i*18}" cy="{RY+22}" r="5.5" fill="{c}" opacity=".9"/>')
-    a(f'<text x="{RX+RW/2}" y="{RY+26}" text-anchor="middle" font-family="{MONO}" font-size="11.5" fill="{P["muted"]}">{HANDLE}@github: ~/profile</text>')
+    a(f'<text x="{RX+RW/2}" y="{RY+26}" text-anchor="middle" font-family="{MONO}" font-size="11.5" fill="{P["muted"]}">{escape(HANDLE)}@github: ~/profile</text>')
     a(f'<text x="{RX+RW-24}" y="{RY+26}" text-anchor="end" font-family="{MONO}" font-size="10.5" fill="{P["muted"]}" opacity=".7">zsh</text>')
     a(f'<line x1="{RX}" y1="{RY+44}" x2="{RX+RW}" y2="{RY+44}" stroke="{P["border"]}" stroke-opacity="{P["border_op"]*1.2:.2f}"/>')
 
@@ -247,7 +283,7 @@ def build(mode):
 
     # salutation
     a(f'<g opacity="0">{fade(1.0)}<text x="{CX}" y="{RY+122}" font-family="{SANS}" font-size="20" fill="{P["muted"]}">{escape(GREETING)}</text></g>')
-    a(f'<g opacity="0">{fade(1.3, 12, .8)}<text x="{CX-2}" y="{RY+176}" font-family="{SANS}" font-size="50" font-weight="800" letter-spacing="1" fill="url(#nameGrad)" filter="url(#glow)">{NAME}</text></g>')
+    a(f'<g opacity="0">{fade(1.3, 12, .8)}<text x="{CX-2}" y="{RY+176}" font-family="{SANS}" font-size="50" font-weight="800" letter-spacing="1" fill="url(#nameGrad)" filter="url(#glow)">{escape(NAME)}</text></g>')
 
     # rôles qui tapent — un élément par état (préfixe), chacun avec une animation courte
     rw = 12.0
@@ -321,6 +357,8 @@ def build(mode):
         pw = len(s) * 7.6 + 30
         if px + pw > maxx:
             px, py = CX, py + 36
+            if py > sy + 14 + 36:
+                print(f"⚠️  trop de compétences : {s!r} passe sur une 3e ligne et chevauche le bas")
         b = 3.8 + i * 0.09
         dur = 3 + (i % 4) * .6
         a(f'<g class="pill" opacity="0">'
@@ -343,7 +381,7 @@ def build(mode):
     }
     a(f'<line x1="{CX}" y1="{soy-27}" x2="{RX+RW-34}" y2="{soy-27}" stroke="{P["border"]}" stroke-opacity="{P["border_op"]*1.2:.2f}" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="4.8s" dur=".5s" fill="freeze"/></line>')
     a(f'<g opacity="0">{fade(5.0, 0, .5)}<text x="{CX}" y="{soy+4.5}" font-family="{MONO}" font-size="12" fill="{P["muted"]}">'
-      f'<tspan fill="{P["a3"]}">●</tspan> {STATUS}</text></g>')
+      f'<tspan fill="{P["a3"]}">●</tspan> {escape(STATUS)}</text></g>')
     for i, s in enumerate(SOCIALS):
         cx = RX + RW - 52 - (len(SOCIALS) - 1 - i) * 46
         b = 5.0 + i * 0.12
@@ -368,10 +406,28 @@ def build(mode):
     return "\n".join(o)
 
 
+def update_readme(svgs):
+    """Met à jour le ?v= des images (hash du contenu) et le texte alternatif dans README.md."""
+    import hashlib, re
+    if not os.path.exists(README):
+        return
+    txt = open(README, encoding="utf-8").read()
+    ver = hashlib.sha1("".join(svgs).encode()).hexdigest()[:8]
+    new = re.sub(r"(assets/(?:dark|light)\.svg)(\?v=[^\"'\s]*)?", rf"\1?v={ver}", txt)
+    alt = f"{NAME} — {ROLES[0]}".replace('"', "'")
+    new = re.sub(r'(<img alt=")[^"]*(" src="\./assets/dark\.svg)', rf"\g<1>{alt}\2", new)
+    if new != txt:
+        open(README, "w", encoding="utf-8").write(new)
+        print("README mis à jour (?v=" + ver + ")")
+
+
 if __name__ == "__main__":
-    import os
-    os.makedirs("assets", exist_ok=True)
+    out = os.path.join(ROOT, "assets")
+    os.makedirs(out, exist_ok=True)
+    svgs = []
     for m in ("dark", "light"):
         s = build(m)
-        open(f"assets/{m}.svg", "w", encoding="utf-8").write(s)
+        svgs.append(s)
+        open(os.path.join(out, f"{m}.svg"), "w", encoding="utf-8").write(s)
         print(m, len(s) // 1024, "KB")
+    update_readme(svgs)
