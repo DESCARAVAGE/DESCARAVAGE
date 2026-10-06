@@ -5,12 +5,12 @@ import os
 from ascii import portrait, from_image
 
 # ============ CONTENU (modifiable) ============
-NAME = "DESCARAVAGE"
+NAME = "Dany SK"
 HANDLE = "descaravage"
 GREETING = "Salut 👋, moi c'est"
 AVATAR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "avatar.png")  # photo de profil GitHub ; si absente, silhouette générique
-ROLES = ["Développeur Frontend React / TypeScript", "Développeur Fullstack · Bac+5",
-         "Workflows agentiques & IA", "Disponible immédiatement"]
+ROLES = ["Product Engineer Frontend", "Fullstack Software · RNCP 7",
+         "Workflows agentiques & IA", "Designer UI/UX", "Project Manager"]
 INFO = [  # (libellé, valeur) — pas d'email ni de téléphone
     ("Localisation", "Tours · ouvert à la mobilité"),
     ("Expérience", "2 ans frontend en alternance · Enedis"),

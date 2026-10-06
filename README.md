@@ -1,15 +1,15 @@
 <h4 align="center">
-  <b>Développeur Frontend React / TypeScript</b> · Tours, ouvert à la mobilité · <b>Disponible immédiatement</b>
+  <b>Product Engineer Frontend</b> · Tours, ouvert à la mobilité
 </h4>
 
 <h6 align="center">
-  🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a>
+  🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a> 🌐
 </h6>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=3">
   <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=3">
-  <img alt="DESCARAVAGE — Développeur Frontend React / TypeScript" src="./assets/dark.svg?v=3" width="100%">
+  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=3" width="100%">
 </picture>
 
 
