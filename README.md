@@ -37,9 +37,9 @@ socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 </h4>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=0d042959">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=0d042959">
-  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=0d042959" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=7d21d5cc">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/light.svg?v=7d21d5cc">
+  <img alt="Dany SK — Product Engineer Frontend" src="./assets/dark.svg?v=7d21d5cc" width="100%">
 </picture>
 
 
