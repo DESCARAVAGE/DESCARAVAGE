@@ -32,14 +32,9 @@ skills:                     # 2 lignes de pastilles max (~12 courtes)
 status: disponible maintenant
 socials: [github, linkedin, web]   # parmi : github, linkedin, x, web
 -->
-
 <h4 align="center">
-  <b>Product Engineer Frontend</b> · Tours, ouvert à la mobilité
-</h4>
-
-<h6 align="center">
   🌐 <a href="https://www.dany-sk-fsp.com/"><b>dany-sk-fsp.com</b></a> 🌐
-</h6>
+</h4>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/dark.svg?v=e4f7de4f">
